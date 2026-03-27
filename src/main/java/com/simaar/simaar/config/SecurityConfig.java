@@ -27,19 +27,32 @@ public class SecurityConfig {
             .csrf(csrf -> csrf.disable())
             .sessionManagement(session ->
                 session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-            .authorizeHttpRequests(auth -> auth
-                // public endpoints — no login needed
-                .requestMatchers("/api/auth/**").permitAll()
-                .requestMatchers("/api/bouquets/**").permitAll()
-                .requestMatchers("/api/events/**").permitAll()
-                .requestMatchers("/api/gift-items/**").permitAll()
-                .requestMatchers("/api/gallery/**").permitAll()
-                // admin only endpoints
-                .requestMatchers("/api/admin/**").hasRole("ADMIN")
-                // everything else needs login
-                .anyRequest().authenticated()
-            )
-            .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+       .authorizeHttpRequests(auth -> auth
+    // allow all static files (html, css, js, images)
+    .requestMatchers(
+        "/",
+        "/index.html",
+        "/pages/**",
+        "/css/**",
+        "/js/**",
+        "/images/**",
+        "/*.html"
+    ).permitAll()
+    // public API endpoints
+    .requestMatchers("/api/auth/**").permitAll()
+    .requestMatchers("/api/bouquets/**").permitAll()
+    .requestMatchers("/api/events/**").permitAll()
+    .requestMatchers("/api/gift-items/**").permitAll()
+    .requestMatchers("/api/gallery/**").permitAll()
+    // admin only
+    .requestMatchers("/api/admin/**").hasRole("ADMIN")
+    // everything else needs login
+    .anyRequest().authenticated()
+)
+.formLogin(form -> form.disable())
+.httpBasic(basic -> basic.disable())
+.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+        
 
         return http.build();
     }

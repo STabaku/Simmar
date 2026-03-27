@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SIMAAR — Pipe Cleaner Flowers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/css/styles.css"/>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <!-- Navbar injected by navbar.js -->
+  <script src="/js/navbar.js"></script>
+
+  <!-- ════════════════════════════
+       HERO
+  ════════════════════════════ -->
+  <section class="hero">
+
+    <div class="hero-bg">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+    </div>
+
+    <div id="petals-container"></div>
+
+    <div class="hero-content">
+
+      <span class="hero-eyebrow">
+        <i data-lucide="flower-2" width="13" height="13"></i>
+        Handmade with love in Albania
+      </span>
+
+      <h1 class="hero-title">
+        Every bouquet tells
+        <em>a story</em>
+        <span class="hero-title-green">made just for you</span>
+      </h1>
+
+      <p class="hero-sub">
+        Unique pipe cleaner flowers that last forever —
+        crafted by hand, one petal at a time.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="/pages/bouquets.html" class="btn btn-primary">
+          <i data-lucide="flower-2" width="16" height="16"></i>
+          Shop Bouquets
+        </a>
+        <a href="/pages/build-bouquet.html" class="btn btn-outline">
+          <i data-lucide="sparkles" width="16" height="16"></i>
+          Build Your Own
+        </a>
+      </div>
+
+    </div>
+
+    <!-- floating gif — replace hero.gif with your file -->
+    <div class="hero-gif-wrap">
+      <img src="/images/hero.gif" alt="Flowers"
+           onerror="this.parentElement.style.display='none'"/>
+    </div>
+
+    <div class="scroll-cue">
+      <div class="scroll-line"></div>
+      Scroll
+    </div>
+
+  </section>
+
+  <!-- ════════════════════════════
+       FEATURE STRIP
+  ════════════════════════════ -->
+  <div class="features-strip">
+    <div class="features-strip-inner">
+      <div class="feature-item">
+        <i data-lucide="hand" width="16" height="16"></i>
+        Handmade with love
+      </div>
+      <div class="feature-item">
+        <i data-lucide="infinity" width="16" height="16"></i>
+        Lasts forever
+      </div>
+      <div class="feature-item">
+        <i data-lucide="palette" width="16" height="16"></i>
+        Custom colors
+      </div>
+      <div class="feature-item">
+        <i data-lucide="gift" width="16" height="16"></i>
+        Perfect gifts
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════
+       BOUQUETS GRID
+  ════════════════════════════ -->
+  <section class="bouquets-section">
+    <div class="container">
+
+      <div class="bouquets-header reveal">
+        <div class="section-label">Our Collection</div>
+        <h2 class="section-title">Popular Bouquets</h2>
+        <p class="section-subtitle">Each piece handcrafted — no two are exactly alike</p>
+      </div>
+
+      <div class="bouquets-grid-4" id="bouquets-grid">
+        <div class="skeleton skeleton-card"></div>
+        <div class="skeleton skeleton-card"></div>
+        <div class="skeleton skeleton-card"></div>
+        <div class="skeleton skeleton-card"></div>
+        <div class="skeleton skeleton-card"></div>
+        <div class="skeleton skeleton-card"></div>
+        <div class="skeleton skeleton-card"></div>
+        <div class="skeleton skeleton-card"></div>
+      </div>
+
+      <div class="pagination" id="pagination"></div>
+
+      <div class="section-cta">
+        <a href="/pages/bouquets.html" class="btn btn-outline">
+          See All Bouquets
+          <i data-lucide="arrow-right" width="16" height="16"></i>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════
+       CATEGORY PREVIEW
+  ════════════════════════════ -->
+  <section class="categories-section">
+    <div class="container">
+
+      <div class="categories-header reveal">
+        <div class="section-label">Explore</div>
+        <h2 class="section-title">Find What You Need</h2>
+        <p class="section-subtitle">From ready bouquets to full event arrangements</p>
+      </div>
+
+      <div class="cat-grid">
+
+        <a href="/pages/bouquets.html" class="cat-card">
+          <div class="cat-card-bg cat-bg-pink">🌸</div>
+          <div class="cat-card-info">
+            <h3 class="cat-card-title">Bouquets</h3>
+            <p class="cat-card-desc">Ready-made designs in beautiful colors</p>
+            <span class="cat-card-link">
+              Shop now
+              <i data-lucide="arrow-right" width="14" height="14"></i>
+            </span>
+          </div>
+        </a>
+
+        <a href="/pages/events.html" class="cat-card">
+          <div class="cat-card-bg cat-bg-purple">💜</div>
+          <div class="cat-card-info">
+            <h3 class="cat-card-title">Events</h3>
+            <p class="cat-card-desc">Weddings, birthdays, proposals & more</p>
+            <span class="cat-card-link">
+              View gallery
+              <i data-lucide="arrow-right" width="14" height="14"></i>
+            </span>
+          </div>
+        </a>
+
+        <a href="/pages/gifts.html" class="cat-card">
+          <div class="cat-card-bg cat-bg-green">🎁</div>
+          <div class="cat-card-info">
+            <h3 class="cat-card-title">Gifts</h3>
+            <p class="cat-card-desc">Teddy bears, frames & complementary items</p>
+            <span class="cat-card-link">
+              Browse gifts
+              <i data-lucide="arrow-right" width="14" height="14"></i>
+            </span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════
+       CLIENT PHOTOS CAROUSEL
+  ════════════════════════════ -->
+  <section class="gallery-section">
+    <div class="container">
+
+      <div class="gallery-header reveal">
+        <div class="section-label">Happy Customers</div>
+        <h2 class="section-title">Made with Love, Kept Forever</h2>
+        <p class="section-subtitle">Real photos from our customers around Albania</p>
+      </div>
+
+      <div class="carousel-outer">
+        <div class="carousel-track-wrapper">
+          <div class="carousel-track" id="gallery-track">
+            <div class="carousel-placeholder">
+              <i data-lucide="image" width="36" height="36"></i>
+              <p>Loading photos...</p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-controls">
+          <button class="carousel-btn" id="carousel-prev" aria-label="Previous">
+            <i data-lucide="chevron-left" width="18" height="18"></i>
+          </button>
+          <div class="carousel-dots" id="carousel-dots"></div>
+          <button class="carousel-btn" id="carousel-next" aria-label="Next">
+            <i data-lucide="chevron-right" width="18" height="18"></i>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════
+       ABOUT / TAGLINE
+  ════════════════════════════ -->
+  <section class="about-section">
+    <div class="container">
+      <div class="about-inner reveal">
+        <div class="about-divider"></div>
+        <p class="about-quote">
+          "Flowers that never wilt, memories that never fade."
+        </p>
+        <p class="about-text">
+          SIMAR was born from a passion for creating beautiful things by hand.
+          Every pipe cleaner flower is twisted, shaped and assembled with care —
+          a little piece of art you can keep forever.
+        </p>
+        <a href="/pages/help.html" class="btn btn-outline btn-outline-light">
+          Learn More About Us
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer injected by footer.js -->
+  <script src="/js/footer.js"></script>
+
+  <!-- Homepage logic -->
+  <script src="/js/home.js"></script>
+
+</body>
+</html>
