@@ -1429,6 +1429,7 @@ p {
   top: 0;
   left: 0;
   width: 100%;
+  width: 100%;
   height: 100%;
   z-index: 0; /* 🔥 behind petals */
   overflow: hidden;
@@ -1861,4 +1862,111 @@ p {
 .btn-outline-light:hover {
   background: rgba(255,255,255,0.1);
   color: white;
+}
+
+/* ============================================
+    SIMAR — Auth pages (login & register)
+   Add these at the bottom of styles.css
+   Auth pages — login & register
+   ============================================ */
+
+/* full page centered layout */
+.auth-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--pink-pale), var(--purple-light), var(--peach));
+  padding: 2rem;
+}
+
+/* background blobs reused from hero */
+.auth-decoration {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* the white card in the center */
+.auth-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 2.8rem 2.5rem;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--pink-light);
+  position: relative;
+  z-index: 1;
+  animation: fadeUp 0.6s ease both;
+}
+
+/* flower icon at top of card */
+.auth-logo {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  margin: 0 auto 1.5rem;
+}
+
+/* full width button */
+.btn-full {
+  width: 100%;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+/* password field with show/hide icon */
+.input-with-icon {
+  position: relative;
+}
+
+.input-with-icon .form-input {
+  padding-right: 2.8rem;
+}
+
+.input-icon-btn {
+  position: absolute;
+  right: 0.8rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.input-icon-btn:hover {
+  color: var(--pink);
+}
+
+/* alert messages */
+.alert {
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1rem;
+  font-size: 0.88rem;
+  margin-bottom: 1.2rem;
+}
+
+.alert-error {
+  background: #fdf0f0;
+  color: #c0392b;
+  border: 1px solid #f5c6cb;
+}
+
+.alert-success {
+  background: #f0fdf4;
+  color: #2d6a4f;
+  border: 1px solid #b7e4c7;
 }
