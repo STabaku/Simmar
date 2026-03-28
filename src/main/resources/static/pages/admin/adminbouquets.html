@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Manage Bouquets — SIMAR</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/css/styles.css"/>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<script src="/js/utils.js"></script>
+  <script src="/js/admin-sidebar.js"></script>
+
+  <div class="admin-layout">
+    <div id="admin-sidebar-mount"></div>
+
+    <main class="admin-main">
+
+      <div class="admin-page-header">
+        <div>
+          <h2 class="admin-page-title">Bouquets</h2>
+          <p class="admin-page-sub">Add, edit or remove bouquets from your shop</p>
+        </div>
+        <button class="btn btn-primary" onclick="openForm()">
+          <i data-lucide="plus" width="16" height="16"></i>
+          Add Bouquet
+        </button>
+      </div>
+      
+      <div class="admin-form-card" id="bouquet-form" style="display:none;">
+        <h3 class="admin-form-title" id="form-title">Add New Bouquet</h3>
+
+        <div class="admin-form-grid">
+          <div class="form-group">
+            <label class="form-label">Name</label>
+            <input class="form-input" id="f-name" placeholder="e.g. Spring Dream"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Base price (ALL)</label>
+            <input class="form-input" type="number" id="f-price" placeholder="1500"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Description</label>
+          <textarea class="form-input" id="f-desc" rows="3"
+                    placeholder="Describe this bouquet..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Image URL</label>
+          <input class="form-input" id="f-image"
+                 placeholder="https://... (Cloudinary URL)"/>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">
+            Options (color + flower count)
+            <button type="button" class="btn btn-outline"
+                    style="padding:0.2rem 0.8rem;font-size:0.8rem;margin-left:0.8rem;"
+                    onclick="addOptionRow()">
+              + Add option
+            </button>
+          </label>
+          <div id="options-list"></div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">
+            <input type="checkbox" id="f-available" checked/>
+            Available in shop
+          </label>
+        </div>
+
+        <div style="display:flex;gap:1rem;margin-top:1rem;">
+          <button class="btn btn-primary" onclick="saveBouquet()">
+            <i data-lucide="save" width="15" height="15"></i>
+            Save
+          </button>
+          <button class="btn btn-outline" onclick="closeForm()">Cancel</button>
+        </div>
+      </div>
+
+   
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Photo</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Available</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="bouquets-tbody">
+            <tr><td colspan="5" style="text-align:center;padding:2rem;">
+              Loading...
+            </td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="/js/admin-bouquets.js"></script>
+
+</body>
+</html>

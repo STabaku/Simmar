@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import com.simaar.simaar.model.GiftItem;
 
 @Data
 @Entity
@@ -19,8 +20,12 @@ public class Order {
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "bouquet_id", nullable = false)
+    @JoinColumn(name = "bouquet_id")
     private Bouquet bouquet;
+    // per porosi te gifteve
+@ManyToOne
+@JoinColumn(name = "gift_item_id")
+private GiftItem giftItem;
 
     @Column(name = "selected_color")
     private String selectedColor;

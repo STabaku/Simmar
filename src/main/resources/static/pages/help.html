@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Help & Contact — SIMAR</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/css/styles.css"/>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <script src="/js/utils.js"></script>
+  <script src="/js/navbar.js"></script>
+
+  <!-- Page hero -->
+  <section class="page-hero">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="container">
+      <div class="page-hero-label">
+        <i data-lucide="help-circle" width="13" height="13"></i>
+        We are here for you
+      </div>
+      <h1 class="page-hero-title">Help & Contact</h1>
+      <p class="page-hero-sub">
+        Answers to common questions and ways to reach us
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section" id="faq">
+    <div class="container">
+
+      <div class="reveal" style="text-align:center;margin-bottom:3rem;">
+        <div class="section-label">FAQ</div>
+        <h2 class="section-title">Common Questions</h2>
+        <p class="section-subtitle">
+          Everything you need to know about SIMAR
+        </p>
+      </div>
+
+      <div class="faq-list reveal">
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            What are pipe cleaner flowers?
+            <i data-lucide="chevron-down" width="18" height="18"></i>
+          </button>
+          <div class="faq-answer">
+            Pipe cleaner flowers are handmade flowers crafted from
+            chenille stems (pipe cleaners). Unlike real flowers they
+            never wilt, fade or die — they last forever as a beautiful
+            keepsake or decoration.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            How do I place an order?
+            <i data-lucide="chevron-down" width="18" height="18"></i>
+          </button>
+          <div class="faq-answer">
+            Browse our bouquets, choose your color and flower count,
+            then click Order Now. You need to create a free account
+            first. Once your order is placed we will confirm it and
+            arrange delivery or pickup.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            How does payment work?
+            <i data-lucide="chevron-down" width="18" height="18"></i>
+          </button>
+          <div class="faq-answer">
+            Payment is done hand to hand — you pay when you receive
+            your bouquet. We do not process any online payments so
+            your financial information is always safe.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Can I build a custom bouquet?
+            <i data-lucide="chevron-down" width="18" height="18"></i>
+          </button>
+          <div class="faq-answer">
+            Yes! Use our Build a Bouquet feature to choose your own
+            wrapper size and color, pick flowers one by one, add
+            extras like pearls or butterfly wings, and see the total
+            price before ordering.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Do you do events and big orders?
+            <i data-lucide="chevron-down" width="18" height="18"></i>
+          </button>
+          <div class="faq-answer">
+            Absolutely! We create arrangements for weddings,
+            birthdays, proposals, pop-up events and more. Contact us
+            directly via email or phone to discuss your vision and
+            we will put together something special.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            How long does delivery take?
+            <i data-lucide="chevron-down" width="18" height="18"></i>
+          </button>
+          <div class="faq-answer">
+            Delivery time depends on the complexity of your order.
+            Simple bouquets are usually ready within 1-3 days.
+            Custom or event orders may take longer — we will always
+            confirm the timeline with you after accepting your order.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Can I cancel my order?
+            <i data-lucide="chevron-down" width="18" height="18"></i>
+          </button>
+          <div class="faq-answer">
+            You can cancel a pending order. Once an order has been
+            accepted and production has started, cancellation may
+            not be possible. Contact us as soon as possible if you
+            need to make changes.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            How do I care for my pipe cleaner flowers?
+            <i data-lucide="chevron-down" width="18" height="18"></i>
+          </button>
+          <div class="faq-answer">
+            Keep them away from water and direct sunlight for long
+            periods. Dust gently with a soft brush or cloth. Store
+            upright in a vase or box. With proper care your bouquet
+            will look beautiful for years.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="section" id="contact"
+           style="background:var(--pink-pale);">
+    <div class="container">
+
+      <div class="reveal" style="text-align:center;margin-bottom:3rem;">
+        <div class="section-label">Get in touch</div>
+        <h2 class="section-title">Contact Us</h2>
+        <p class="section-subtitle">
+          Have a question not answered above? We would love to hear from you
+        </p>
+      </div>
+
+      <div class="contact-grid reveal">
+
+        <!-- Contact info -->
+        <div class="contact-info-card">
+          <h3 class="contact-info-title">Reach us directly</h3>
+
+          <div class="contact-info-item">
+            <div class="contact-info-icon">
+              <i data-lucide="mail" width="20" height="20"></i>
+            </div>
+            <div>
+              <div class="contact-info-label">Email</div>
+              <!-- replace with your email -->
+              <a href="mailto:hello@simar.al"
+                 class="contact-info-value">hello@simar.al</a>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="contact-info-icon">
+              <i data-lucide="phone" width="20" height="20"></i>
+            </div>
+            <div>
+              <div class="contact-info-label">Phone / WhatsApp</div>
+              <!-- replace with your number -->
+              <a href="tel:+355600000000"
+                 class="contact-info-value">+355 6X XXX XXXX</a>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="contact-info-icon">
+              <i data-lucide="instagram" width="20" height="20"></i>
+            </div>
+            <div>
+              <div class="contact-info-label">Instagram</div>
+              <a href="#" class="contact-info-value">@simar.flowers</a>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="contact-info-icon">
+              <i data-lucide="map-pin" width="20" height="20"></i>
+            </div>
+            <div>
+              <div class="contact-info-label">Location</div>
+              <span class="contact-info-value">Albania</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact form -->
+        <div class="form-card" id="contact">
+          <h3 class="form-title"
+              style="font-size:1.4rem;margin-bottom:0.3rem;">
+            Send a message
+          </h3>
+          <p class="form-subtitle">We reply within 24 hours</p>
+
+          <div class="alert alert-success" id="form-success"
+               style="display:none;">
+            Message sent! We will get back to you soon 🌸
+          </div>
+          <div class="alert alert-error" id="form-error"
+               style="display:none;"></div>
+
+          <div class="form-group">
+            <label class="form-label">Your name</label>
+            <input class="form-input" id="c-name" placeholder="Your name"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email address</label>
+            <input class="form-input" type="email" id="c-email"
+                   placeholder="your@email.com"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Message</label>
+            <textarea class="form-input" id="c-message" rows="4"
+                      placeholder="Tell us what you need..."></textarea>
+          </div>
+
+          <button class="btn btn-primary btn-full" id="send-btn"
+                  onclick="sendMessage()">
+            <i data-lucide="send" width="15" height="15"></i>
+            Send Message
+          </button>
+
+          <p style="font-size:0.78rem;color:var(--text-light);
+                    text-align:center;margin-top:0.8rem;">
+            <!-- EmailJS will be connected here in Step 8 -->
+            Or contact us directly via email or Instagram
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <script src="/js/footer.js"></script>
+  <script src="/js/help.js"></script>
+
+</body>
+</html>

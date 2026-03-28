@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Events — SIMAR Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/css/styles.css"/>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <script src="/js/utils.js"></script>
+  <script src="/js/admin-sidebar.js"></script>
+
+  <div class="admin-layout">
+    <div id="admin-sidebar-mount"></div>
+
+    <main class="admin-main">
+
+      <div class="admin-page-header">
+        <div>
+          <h2 class="admin-page-title">Events</h2>
+          <p class="admin-page-sub">Manage event categories shown on the events page</p>
+        </div>
+      </div>
+
+      <!-- Add event category form -->
+      <div class="admin-form-card">
+        <h3 class="admin-form-title">Add Event Category</h3>
+        <div class="admin-form-grid">
+          <div class="form-group">
+            <label class="form-label">Category name</label>
+            <input class="form-input" id="e-name"
+                   placeholder="e.g. Weddings, Birthdays, Proposals"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">First photo URL</label>
+            <input class="form-input" id="e-photo"
+                   placeholder="https://... (Cloudinary URL)"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Description</label>
+          <textarea class="form-input" id="e-desc" rows="3"
+                    placeholder="Describe this event type..."></textarea>
+        </div>
+        <button class="btn btn-primary" onclick="addEvent()">
+          <i data-lucide="plus" width="15" height="15"></i>
+          Add Category
+        </button>
+      </div>
+
+      <!-- Events list -->
+      <div id="events-list">
+        <div class="skeleton" style="height:80px;border-radius:16px;margin-bottom:1rem;"></div>
+        <div class="skeleton" style="height:80px;border-radius:16px;margin-bottom:1rem;"></div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="/js/admin-events.js"></script>
+
+</body>
+</html>

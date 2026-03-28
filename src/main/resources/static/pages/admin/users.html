@@ -1,0 +1,48 @@
+<!-- ============================================
+     SAVE EACH SECTION AS ITS OWN FILE
+     ============================================ -->
+
+
+<!-- ── admin/users.html ── -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Users — SIMAR Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/css/styles.css"/>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <script src="/js/utils.js"></script>
+  <script src="/js/admin-sidebar.js"></script>
+  <div class="admin-layout">
+    <div id="admin-sidebar-mount"></div>
+    <main class="admin-main">
+      <div class="admin-page-header">
+        <div>
+          <h2 class="admin-page-title">Users</h2>
+          <p class="admin-page-sub">All registered customers</p>
+        </div>
+      </div>
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Name</th><th>Email</th><th>Role</th>
+              <th>Joined</th><th>Status</th><th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="users-tbody">
+            <tr><td colspan="6" style="text-align:center;padding:2rem;">Loading...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+  <script src="/js/admin-users.js"></script>
+</body>
+</html>

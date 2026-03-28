@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gallery — SIMAR Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/css/styles.css"/>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <script src="/js/utils.js"></script>
+  <script src="/js/admin-sidebar.js"></script>
+  <div class="admin-layout">
+    <div id="admin-sidebar-mount"></div>
+    <main class="admin-main">
+      <div class="admin-page-header">
+        <div>
+          <h2 class="admin-page-title">Client Gallery</h2>
+          <p class="admin-page-sub">Photos shown on the homepage carousel</p>
+        </div>
+      </div>
+
+      <!-- Add photo form -->
+      <div class="admin-form-card" style="margin-bottom:2rem;">
+        <h3 class="admin-form-title">Add Client Photo</h3>
+        <div class="admin-form-grid">
+          <div class="form-group">
+            <label class="form-label">Image URL</label>
+            <input class="form-input" id="g-url" placeholder="https://... (Cloudinary URL)"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Caption (optional)</label>
+            <input class="form-input" id="g-caption" placeholder="Happy customer!"/>
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="addPhoto()">
+          <i data-lucide="plus" width="15" height="15"></i>
+          Add Photo
+        </button>
+      </div>
+
+      <!-- Gallery grid -->
+      <div class="bouquets-grid-4" id="gallery-grid">
+        <div class="skeleton skeleton-card"></div>
+        <div class="skeleton skeleton-card"></div>
+        <div class="skeleton skeleton-card"></div>
+        <div class="skeleton skeleton-card"></div>
+      </div>
+
+    </main>
+  </div>
+  <script src="/js/admin-gallery.js"></script>
+</body>
+</html>

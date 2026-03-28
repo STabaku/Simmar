@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Supply Tracker — SIMAR Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/css/styles.css"/>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<script src="/js/utils.js"></script>
+  <script src="/js/admin-sidebar.js"></script>
+  <div class="admin-layout">
+    <div id="admin-sidebar-mount"></div>
+    <main class="admin-main">
+      <div class="admin-page-header">
+        <div>
+          <h2 class="admin-page-title">Supply Tracker</h2>
+          <p class="admin-page-sub">Track materials you buy — only visible to you</p>
+        </div>
+      </div>
+
+      <!-- Add supply form -->
+      <div class="admin-form-card" style="margin-bottom:2rem;">
+        <h3 class="admin-form-title">Add Purchase</h3>
+        <div class="admin-form-grid">
+          <div class="form-group">
+            <label class="form-label">Product name</label>
+            <input class="form-input" id="s-name" placeholder="e.g. Pipe cleaners"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Quantity</label>
+            <input class="form-input" type="number" id="s-qty" placeholder="100"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Unit</label>
+            <input class="form-input" id="s-unit" placeholder="pieces / packs / meters"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Price paid (ALL)</label>
+            <input class="form-input" type="number" id="s-price" placeholder="500"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Date purchased</label>
+            <input class="form-input" type="date" id="s-date"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Notes (optional)</label>
+            <input class="form-input" id="s-notes" placeholder="Any notes..."/>
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="addSupply()">
+          <i data-lucide="plus" width="15" height="15"></i>
+          Add Purchase
+        </button>
+      </div>
+
+      <!-- Total spending summary -->
+      <div class="stat-cards" style="margin-bottom:2rem;">
+        <div class="stat-card">
+          <div class="stat-icon pink">
+            <i data-lucide="trending-down" width="22" height="22"></i>
+          </div>
+          <div>
+            <div class="stat-value" id="total-spent">—</div>
+            <div class="stat-label">Total Spent (ALL)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Supply table -->
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Product</th><th>Quantity</th>
+              <th>Price Paid</th><th>Date</th><th>Notes</th>
+            </tr>
+          </thead>
+          <tbody id="supply-tbody">
+            <tr><td colspan="5" style="text-align:center;padding:2rem;">Loading...</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </main>
+  </div>
+  <script src="/js/admin-supply.js"></script>
+</body>
+</html>

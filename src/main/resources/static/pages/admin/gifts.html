@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gifts — SIMAR Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/css/styles.css"/>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <script src="/js/utils.js"></script>
+  <script src="/js/admin-sidebar.js"></script>
+
+  <div class="admin-layout">
+    <div id="admin-sidebar-mount"></div>
+
+    <main class="admin-main">
+
+      <div class="admin-page-header">
+        <div>
+          <h2 class="admin-page-title">Gift Items</h2>
+          <p class="admin-page-sub">
+            Add complementary gifts shown on the Gifts page
+          </p>
+        </div>
+        <button class="btn btn-primary" onclick="openForm()">
+          <i data-lucide="plus" width="16" height="16"></i>
+          Add Gift Item
+        </button>
+      </div>
+
+      <!-- Add/Edit form -->
+      <div class="admin-form-card" id="gift-form" style="display:none;">
+        <h3 class="admin-form-title" id="form-title">Add Gift Item</h3>
+        <div class="admin-form-grid">
+          <div class="form-group">
+            <label class="form-label">Name</label>
+            <input class="form-input" id="g-name"
+                   placeholder="e.g. Teddy Bear"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Price (ALL)</label>
+            <input class="form-input" type="number" id="g-price"
+                   placeholder="800"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Size (optional)</label>
+            <input class="form-input" id="g-size"
+                   placeholder="e.g. Small, Medium, Large"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Color (optional)</label>
+            <input class="form-input" id="g-color"
+                   placeholder="e.g. Brown, Pink"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Description</label>
+          <textarea class="form-input" id="g-desc" rows="2"
+                    placeholder="Short description..."></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Image URL</label>
+          <input class="form-input" id="g-image"
+                 placeholder="https://... (Cloudinary URL)"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">
+            <input type="checkbox" id="g-available" checked/>
+            Available in shop
+          </label>
+        </div>
+        <div style="display:flex;gap:1rem;margin-top:1rem;">
+          <button class="btn btn-primary" onclick="saveGift()">
+            <i data-lucide="save" width="15" height="15"></i>
+            Save
+          </button>
+          <button class="btn btn-outline" onclick="closeForm()">
+            Cancel
+          </button>
+        </div>
+      </div>
+
+      <!-- Gifts table -->
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Photo</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Size</th>
+              <th>Color</th>
+              <th>Available</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="gifts-tbody">
+            <tr>
+              <td colspan="7" style="text-align:center;padding:2rem;">
+                Loading...
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="/js/admin-gifts.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Events — SIMAR</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/css/styles.css"/>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<script src="/js/utils.js"></script>
+  <script src="/js/navbar.js"></script>
+
+  <!-- Page hero -->
+  <section class="page-hero">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="container">
+      <div class="page-hero-label">
+        <i data-lucide="calendar-heart" width="13" height="13"></i>
+        Big occasions
+      </div>
+      <h1 class="page-hero-title">Events & Arrangements</h1>
+      <p class="page-hero-sub">
+        From intimate proposals to grand weddings —
+        we create something unforgettable
+      </p>
+    </div>
+  </section>
+
+  <!-- Events catalog -->
+  <section class="events-section">
+    <div class="container" id="events-container">
+
+      <!-- events injected by JS -->
+      <!-- while loading show skeletons -->
+      <div class="event-row">
+        <div class="skeleton event-image-wrap"></div>
+        <div>
+          <div class="skeleton" style="height:20px;width:30%;border-radius:8px;margin-bottom:1rem;"></div>
+          <div class="skeleton" style="height:40px;width:70%;border-radius:8px;margin-bottom:1rem;"></div>
+          <div class="skeleton" style="height:80px;border-radius:8px;"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Contact strip -->
+  <div class="events-contact">
+    <div class="container">
+      <h2 class="events-contact-title">Interested in a big order?</h2>
+      <p class="events-contact-sub">
+        Contact us directly and we will create something special for your event
+      </p>
+      <div class="events-contact-links">
+        <div class="events-contact-item">
+          <i data-lucide="mail" width="18" height="18"></i>
+          <!-- replace with your email -->
+          hello@simar.al
+        </div>
+        <div class="events-contact-item">
+          <i data-lucide="phone" width="18" height="18"></i>
+          <!-- replace with your number -->
+          +355 6X XXX XXXX
+        </div>
+        <div class="events-contact-item">
+          <i data-lucide="instagram" width="18" height="18"></i>
+          @simar.flowers
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/footer.js"></script>
+  <script src="/js/events.js"></script>
+
+</body>
+</html>

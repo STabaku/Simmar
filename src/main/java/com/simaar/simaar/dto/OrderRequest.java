@@ -6,8 +6,10 @@ import lombok.Data;
 @Data
 public class OrderRequest {
 
-    @NotNull(message = "Bouquet is required")
+    
     private Long bouquetId;
+    // adding this
+    private Long giftItemId;
 
     @NotNull(message = "Flower count is required")
     private Integer selectedCount;

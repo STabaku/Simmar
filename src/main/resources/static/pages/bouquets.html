@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bouquets — SIMAR</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/css/styles.css"/>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<script src="/js/utils.js"></script>
+  <script src="/js/navbar.js"></script>
+
+  <!-- Page hero -->
+  <section class="page-hero">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="container">
+      <div class="page-hero-label">
+        <i data-lucide="flower-2" width="13" height="13"></i>
+        Handmade Collection
+      </div>
+      <h1 class="page-hero-title">Our Bouquets</h1>
+      <p class="page-hero-sub">Every piece crafted by hand — no two are exactly alike</p>
+    </div>
+  </section>
+
+  <!-- Bouquets catalog -->
+  <section class="bouquets-section">
+    <div class="container">
+
+      <!-- Filters -->
+      <div class="filters-bar">
+        <span class="filters-label">Filter by</span>
+
+        <div class="filter-chips" id="color-filters">
+          <button class="filter-chip active" data-color="all">All colors</button>
+        </div>
+
+        <select class="filter-select" id="price-sort">
+          <option value="default">Sort by price</option>
+          <option value="asc">Price: low to high</option>
+          <option value="desc">Price: high to low</option>
+        </select>
+      </div>
+
+      <!-- Grid -->
+      <div class="bouquets-grid-4" id="bouquets-grid">
+        <div class="skeleton skeleton-card"></div>
+        <div class="skeleton skeleton-card"></div>
+        <div class="skeleton skeleton-card"></div>
+        <div class="skeleton skeleton-card"></div>
+        <div class="skeleton skeleton-card"></div>
+        <div class="skeleton skeleton-card"></div>
+        <div class="skeleton skeleton-card"></div>
+        <div class="skeleton skeleton-card"></div>
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination" id="pagination"></div>
+
+    </div>
+  </section>
+
+  <script src="/js/footer.js"></script>
+  <script src="/js/bouquets.js"></script>
+
+</body>
+</html>

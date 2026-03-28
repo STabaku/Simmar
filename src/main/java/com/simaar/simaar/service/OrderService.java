@@ -3,14 +3,17 @@ package com.simaar.simaar.service;
 import com.simaar.simaar.dto.OrderDTO;
 import com.simaar.simaar.dto.OrderRequest;
 import com.simaar.simaar.model.Bouquet;
+import com.simaar.simaar.model.GiftItem;
 import com.simaar.simaar.model.Order;
 import com.simaar.simaar.model.User;
 import com.simaar.simaar.repository.BouquetRepository;
+import com.simaar.simaar.repository.GiftItemRepository;
 import com.simaar.simaar.repository.OrderRepository;
 import com.simaar.simaar.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,39 +26,61 @@ public class OrderService {
     private final BouquetRepository bouquetRepository;
     private final UserRepository userRepository;
 
+    private final GiftItemRepository giftItemRepository;
+
     // user places an order
-    public OrderDTO placeOrder(OrderRequest request) {
+   public OrderDTO placeOrder(OrderRequest request) {
 
-        // get the logged in user from the JWT token
-        String email = SecurityContextHolder.getContext()
-                .getAuthentication().getName();
+    // get the logged in user from the JWT token
+    String email = SecurityContextHolder.getContext()
+            .getAuthentication().getName();
 
-        User user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+    User user = userRepository.findByEmail(email)
+            .orElseThrow(() -> new RuntimeException("User not found"));
+// nese jane te dyja null, nuk mund te behet porosia
+            if (request.getBouquetId() == null && request.getGiftItemId() == null) {
+    throw new RuntimeException("Order must contain a bouquet or a gift item");
+}
 
-        Bouquet bouquet = bouquetRepository.findById(request.getBouquetId())
+    java.math.BigDecimal total = java.math.BigDecimal.ZERO;
+    Bouquet bouquet = null;
+    GiftItem giftItem = null;
+
+    // handle bouquet order
+    if (request.getBouquetId() != null) {
+        bouquet = bouquetRepository.findById(request.getBouquetId())
                 .orElseThrow(() -> new RuntimeException("Bouquet not found"));
-
         if (!bouquet.getIsAvailable()) {
             throw new RuntimeException("Bouquet is not available");
         }
-
-        // calculate total price
-        // base price x number of flowers selected
-        java.math.BigDecimal total = bouquet.getBasePrice()
-                .multiply(java.math.BigDecimal.valueOf(request.getSelectedCount()));
-
-        Order order = new Order();
-        order.setUser(user);
-        order.setBouquet(bouquet);
-        order.setSelectedColor(request.getSelectedColor());
-        order.setSelectedCount(request.getSelectedCount());
-        order.setTotalPrice(total);
-        order.setNotes(request.getNotes());
-        order.setStatus(Order.Status.PENDING);
-
-        return toDTO(orderRepository.save(order));
+        // bouquet part
+total = total.add(bouquet.getBasePrice()
+        .multiply(java.math.BigDecimal.valueOf(request.getSelectedCount())));
     }
+
+    // handle gift item order
+    if (request.getGiftItemId() != null) {
+        giftItem = giftItemRepository.findById(request.getGiftItemId())
+                .orElseThrow(() -> new RuntimeException("Gift item not found"));
+        if (!giftItem.getIsAvailable()) {
+            throw new RuntimeException("Gift item is not available");
+        }
+       // gift part
+total = total.add(giftItem.getPrice());
+    }
+
+    Order order = new Order();
+    order.setUser(user);
+    order.setBouquet(bouquet);
+    order.setGiftItem(giftItem);
+    order.setSelectedColor(request.getSelectedColor());
+    order.setSelectedCount(request.getSelectedCount());
+    order.setTotalPrice(total);
+    order.setNotes(request.getNotes());
+    order.setStatus(Order.Status.PENDING);
+
+    return toDTO(orderRepository.save(order));
+}
 
     // user sees their own orders
     public List<OrderDTO> getMyOrders() {
@@ -112,6 +137,15 @@ public class OrderService {
         dto.setUserName(order.getUser().getName());
         dto.setUserEmail(order.getUser().getEmail());
         dto.setBouquetName(order.getBouquet().getName());
+
+// add after setBouquetName
+if (order.getGiftItem() != null) {
+    dto.setGiftItemName(order.getGiftItem().getName());
+}
+if (order.getBouquet() != null) {
+    dto.setBouquetName(order.getBouquet().getName());
+}
+
         dto.setSelectedColor(order.getSelectedColor());
         dto.setSelectedCount(order.getSelectedCount());
         dto.setTotalPrice(order.getTotalPrice());

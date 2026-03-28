@@ -16,4 +16,6 @@ public class OrderDTO {
     private String status;
     private String notes;
     private LocalDateTime createdAt;
+    // add this field
+    private String giftItemName;
 }
