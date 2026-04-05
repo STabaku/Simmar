@@ -1,1 +1,147 @@
-<!-- Mos harro <script src="/js/utils.js"></script> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Build Bouquets — SIMAR</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/css/styles.css"/>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<script src="/js/utils.js"></script>
+  <script src="/js/navbar.js"></script>
+
+<div class="bb-wrap">
+
+  <!-- ── PANEL ── -->
+  <div class="bb-panel">
+    <h2 class="panel-title">Build Your Bouquet</h2>
+    <p class="panel-sub">Simar Flowers</p>
+
+    <!-- Size -->
+    <p class="slabel">1. Wrapper Size</p>
+    <div class="og three size-grid">
+      <button class="ob active" onclick="setSize('small',this)">Small<br><span style="font-size:9px;opacity:0.55">1–10</span></button>
+      <button class="ob" onclick="setSize('medium',this)">Medium<br><span style="font-size:9px;opacity:0.55">11–20</span></button>
+      <button class="ob" onclick="setSize('large',this)">Large<br><span style="font-size:9px;opacity:0.55">21+</span></button>
+    </div>
+
+    <!-- Wrap color -->
+    <p class="slabel">2. Wrapper Color</p>
+    <div class="crow" id="wrapColors">
+      <div class="cdot active" style="background:#f2c8d8" title="Blush Pink"
+           onclick="setWrap(['#f2c8d8','#e8b0c8','#d898b4'],'Blush Pink',this)"></div>
+      <div class="cdot" style="background:#e8d0f0" title="Lilac"
+           onclick="setWrap(['#e8d0f0','#d4b8e8','#c0a0d4'],'Lilac',this)"></div>
+      <div class="cdot" style="background:#fde8c8" title="Peach"
+           onclick="setWrap(['#fde8c8','#f5d0a0','#e8b878'],'Peach',this)"></div>
+      <div class="cdot" style="background:#c8dce8" title="Sky Blue"
+           onclick="setWrap(['#c8dce8','#aec8dc','#94b4d0'],'Sky Blue',this)"></div>
+      <div class="cdot" style="background:#c8e8d0" title="Sage"
+           onclick="setWrap(['#c8e8d0','#aad0b4','#8cb898'],'Sage',this)"></div>
+      <div class="cdot" style="background:#f5f0e8" title="Cream"
+           onclick="setWrap(['#f5f0e8','#e8e0d0','#d4ccb8'],'Cream',this)"></div>
+      <div class="cdot" style="background:#f0f0f0;outline:0.5px solid #ccc" title="White"
+           onclick="setWrap(['#f0f0f0','#e0e0e0','#cccccc'],'White',this)"></div>
+      <div class="cdot" style="background:#3a3050" title="Midnight"
+           onclick="setWrap(['#3a3050','#2e2540','#221a30'],'Midnight',this)"></div>
+    </div>
+    <p style="font-size:11px;color:var(--text-secondary);margin-top:5px" id="wrapName">Blush Pink</p>
+
+    <!-- Mode -->
+    <p class="slabel">3. Flower Type</p>
+    <div class="og two mode-grid">
+      <button class="ob active" onclick="setMode('single',this)">One Type</button>
+      <button class="ob" onclick="setMode('mixed',this)">Mixed</button>
+    </div>
+
+    <!-- Single mode -->
+    <div id="singleSec" style="margin-top:9px">
+      <div class="sc">
+        <div class="og two" id="typeGrid">
+          <button class="ob active" onclick="setType('rose',this)">Rose</button>
+          <button class="ob" onclick="setType('tulip',this)">Tulip</button>
+          <button class="ob" onclick="setType('peony',this)">Peony</button>
+          <button class="ob" onclick="setType('daisy',this)">Daisy</button>
+        </div>
+        <p class="slabel" style="margin-top:9px">Color</p>
+        <div class="crow" id="flowerColors">
+          <div class="cdot active" style="background:#cc3055" onclick="setSColor('#cc3055','Red',this)"></div>
+          <div class="cdot" style="background:#f0a0b8" onclick="setSColor('#f0a0b8','Pink',this)"></div>
+          <div class="cdot" style="background:#f0d840" onclick="setSColor('#f0d840','Yellow',this)"></div>
+          <div class="cdot" style="background:#f0ece4;outline:0.5px solid #ccc" onclick="setSColor('#f0ece4','White',this)"></div>
+          <div class="cdot" style="background:#a870cc" onclick="setSColor('#a870cc','Purple',this)"></div>
+          <div class="cdot" style="background:#f09030" onclick="setSColor('#f09030','Orange',this)"></div>
+        </div>
+        <div class="qrow">
+          <button class="qbtn" onclick="changeQty(-1)">−</button>
+          <span class="qty-num" id="qtyD">9</span>
+          <button class="qbtn" onclick="changeQty(1)">+</button>
+          <span class="qty-unit">stems</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mixed mode -->
+    <div id="mixedSec" style="display:none;margin-top:9px">
+      <div class="sc">
+        <div class="mixrow">
+          <select id="mxF">
+            <option value="rose">Rose</option>
+            <option value="tulip">Tulip</option>
+            <option value="peony">Peony</option>
+            <option value="daisy">Daisy</option>
+          </select>
+          <select id="mxC">
+            <option value="#cc3055">Red</option>
+            <option value="#f0a0b8">Pink</option>
+            <option value="#f0d840">Yellow</option>
+            <option value="#f0ece4">White</option>
+            <option value="#a870cc">Purple</option>
+            <option value="#f09030">Orange</option>
+          </select>
+          <input type="number" id="mxQ" value="5" min="1" max="20">
+          <button class="addbtn" onclick="addMix()">Add</button>
+        </div>
+        <div id="mixTags"></div>
+      </div>
+    </div>
+
+    <!-- Extras -->
+    <p class="slabel">4. Extras</p>
+    <label class="xchk"><input type="checkbox" onchange="togX('Pearl pins',3,this)"> Pearl pins +€3</label>
+    <label class="xchk"><input type="checkbox" onchange="togX('Ribbon bow',2,this)"> Ribbon bow +€2</label>
+    <label class="xchk"><input type="checkbox" onchange="togX('Glitter',4,this)"> Glitter dust +€4</label>
+    <label class="xchk"><input type="checkbox" onchange="togX('Butterfly',5,this)"> Butterfly accent +€5</label>
+
+    <!-- Price -->
+    <div class="div"></div>
+    <div class="prow"><span>Wrapper</span><span id="pW">€5</span></div>
+    <div class="prow"><span>Flowers</span><span id="pF">€14</span></div>
+    <div class="prow"><span>Extras</span><span id="pX">€0</span></div>
+    <div class="div"></div>
+    <div class="ptot"><span>Total</span><span id="pT">€19</span></div>
+
+    <!-- Actions -->
+    <button class="obtn" onclick="placeCustomOrder()">Place Order ↗</button>
+    <button class="clearbtn" onclick="clearAll()">↺ Start Over</button>
+  </div>
+
+  <!-- ── PREVIEW ── -->
+  <div class="bb-preview">
+    <canvas id="bc" width="340" height="500"></canvas>
+    <p class="plabel" id="plbl">Small Blush Pink · 9 Red Roses</p>
+  </div>
+
+</div>
+
+
+ <script src="/js/footer.js"></script>
+<script src="/js/buildBouquet.js"></script>
+
+
+</body>
+</html>

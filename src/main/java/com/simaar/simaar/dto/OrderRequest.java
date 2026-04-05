@@ -1,21 +1,18 @@
 package com.simaar.simaar.dto;
 
-import jakarta.validation.constraints.NotNull;
+//import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 @Data
 public class OrderRequest {
 
-    
-    private Long bouquetId;
-    // adding this
-    private Long giftItemId;
+    private Long bouquetId;       // null for custom / gift orders
+    private Long giftItemId;      // null for bouquet / custom orders
 
-    @NotNull(message = "Flower count is required")
     private Integer selectedCount;
-
-    @NotNull(message = "Color is required")
     private String selectedColor;
+
+    private java.math.BigDecimal totalPrice; // used for custom orders
 
     private String notes;
 }

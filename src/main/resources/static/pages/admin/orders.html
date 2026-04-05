@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Orders — SIMAR Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <script src="/js/utils.js"></script>
+  <script src="/js/admin-sidebar.js"></script>
+
+  <div class="admin-layout">
+
+    <div id="admin-sidebar-mount"></div>
+
+    <main class="admin-main">
+
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:2rem;">
+        <div>
+          <h2 style="font-family:var(--font-heading);color:var(--brown);margin-bottom:0.3rem;">
+            Orders
+          </h2>
+          <p style="color:var(--text-light);font-size:0.9rem;">
+            Manage all customer orders — bouquets, custom builds, and gifts.
+          </p>
+        </div>
+        <div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;">
+          <span style="font-size:0.8rem;color:var(--text-light);font-family:var(--font-body);">Filter:</span>
+          <button class="filter-btn active" onclick="setFilter('ALL', this)">All</button>
+          <button class="filter-btn" onclick="setFilter('PENDING', this)">Pending</button>
+          <button class="filter-btn" onclick="setFilter('ACCEPTED', this)">Accepted</button>
+          <button class="filter-btn" onclick="setFilter('CANCELLED', this)">Cancelled</button>
+        </div>
+
+        <div style="margin-bottom:1.5rem;">
+  <input
+    id="search-input"
+    type="text"
+    placeholder="Search by name or email..."
+    oninput="applySearch(this.value)"
+    style="padding:0.5rem 1.1rem;border-radius:50px;border:1.5px solid var(--pink);
+           font-family:var(--font-body);font-size:0.88rem;width:260px;
+           outline:none;color:var(--brown);background:#fff;"
+  />
+</div>
+      </div>
+
+      <!-- Orders table -->
+      <div class="admin-table-wrap">
+        <table class="admin-table" id="orders-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Customer</th>
+              <th>Item</th>
+              <th>Details</th>
+              <th>Total</th>
+              <th>Date</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="orders-tbody">
+            <tr><td colspan="8" style="text-align:center;padding:2rem;color:var(--text-light);">
+              Loading orders...
+            </td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Pagination -->
+      <div id="pagination" style="display:flex;align-items:center;justify-content:center;gap:0.5rem;margin-top:1.5rem;flex-wrap:wrap;"></div>
+
+    </main>
+  </div>
+
+  <!-- Notes modal -->
+  <div id="notes-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.35);z-index:1000;align-items:center;justify-content:center;">
+    <div style="background:#fff;border-radius:20px;padding:2rem;max-width:480px;width:90%;box-shadow:0 8px 40px rgba(92,64,51,0.15);">
+      <h3 style="font-family:var(--font-heading);color:var(--brown);margin-bottom:1rem;">Order Notes</h3>
+      <p id="modal-notes-text" style="font-family:var(--font-body);color:var(--text-dark);line-height:1.6;white-space:pre-wrap;"></p>
+      <button onclick="closeModal()" style="margin-top:1.5rem;padding:0.6rem 1.4rem;border-radius:50px;border:none;background:var(--pink);color:#fff;font-family:var(--font-body);cursor:pointer;">Close</button>
+    </div>
+  </div>
+
+  <style>
+    .filter-btn {
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      border: 1.5px solid var(--pink);
+      background: transparent;
+      color: var(--brown);
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: var(--pink);
+      color: #fff;
+    }
+    .status-badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      font-family: var(--font-body);
+      letter-spacing: 0.03em;
+    }
+    .status-PENDING    { background: #fff3cd; color: #856404; }
+    .status-ACCEPTED   { background: #d1e7dd; color: #0a5c36; }
+    .status-CANCELLED  { background: #f8d7da; color: #842029; }
+    .action-btn {
+      padding: 0.3rem 0.75rem;
+      border-radius: 50px;
+      border: none;
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .action-btn:hover { opacity: 0.8; }
+    .btn-accept  { background: #d1e7dd; color: #0a5c36; }
+    .btn-cancel  { background: #f8d7da; color: #842029; }
+    .btn-notes   { background: #e8eaf6; color: #3949ab; }
+    .page-btn {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      border: 1.5px solid var(--pink);
+      background: transparent;
+      color: var(--brown);
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .page-btn.active, .page-btn:hover { background: var(--pink); color: #fff; }
+    #notes-modal.open { display: flex; }
+  </style>
+
+  <script src="/js/admin-orders.js"></script>
+
+</body>
+</html>

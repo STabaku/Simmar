@@ -23,6 +23,13 @@ public class Order {
     @JoinColumn(name = "bouquet_id")
     private Bouquet bouquet;
     // per porosi te gifteve
+
+
+@ManyToOne
+@JoinColumn(name = "custom_bouquet_id")
+private CustomBouquet customBouquet;
+
+
 @ManyToOne
 @JoinColumn(name = "gift_item_id")
 private GiftItem giftItem;

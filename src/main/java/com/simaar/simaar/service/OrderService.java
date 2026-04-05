@@ -29,45 +29,47 @@ public class OrderService {
     private final GiftItemRepository giftItemRepository;
 
     // user places an order
-   public OrderDTO placeOrder(OrderRequest request) {
+  public OrderDTO placeOrder(OrderRequest request) {
 
-    // get the logged in user from the JWT token
     String email = SecurityContextHolder.getContext()
             .getAuthentication().getName();
 
     User user = userRepository.findByEmail(email)
             .orElseThrow(() -> new RuntimeException("User not found"));
-// nese jane te dyja null, nuk mund te behet porosia
-            if (request.getBouquetId() == null && request.getGiftItemId() == null) {
-    throw new RuntimeException("Order must contain a bouquet or a gift item");
-}
 
     java.math.BigDecimal total = java.math.BigDecimal.ZERO;
     Bouquet bouquet = null;
     GiftItem giftItem = null;
 
-    // handle bouquet order
     if (request.getBouquetId() != null) {
-        bouquet = bouquetRepository.findById(request.getBouquetId())
+        Long bid = request.getBouquetId();
+        bouquet = bouquetRepository.findById(bid)
                 .orElseThrow(() -> new RuntimeException("Bouquet not found"));
         if (!bouquet.getIsAvailable()) {
             throw new RuntimeException("Bouquet is not available");
         }
-        // bouquet part
-total = total.add(bouquet.getBasePrice()
-        .multiply(java.math.BigDecimal.valueOf(request.getSelectedCount())));
+        int count = request.getSelectedCount() != null
+                ? request.getSelectedCount() : 1;
+        total = total.add(bouquet.getBasePrice()
+                .multiply(java.math.BigDecimal.valueOf(count)));
     }
 
-    // handle gift item order
     if (request.getGiftItemId() != null) {
-        giftItem = giftItemRepository.findById(request.getGiftItemId())
-                .orElseThrow(() -> new RuntimeException("Gift item not found"));
+        Long gid = request.getGiftItemId();
+        giftItem = giftItemRepository.findById(gid)
+                .orElseThrow(() -> new RuntimeException("Gift not found"));
         if (!giftItem.getIsAvailable()) {
             throw new RuntimeException("Gift item is not available");
         }
-       // gift part
-total = total.add(giftItem.getPrice());
+        total = total.add(giftItem.getPrice());
     }
+
+    // custom bouquet order — use price from request
+if (request.getBouquetId() == null && request.getGiftItemId() == null) {
+    if (request.getTotalPrice() != null) {
+        total = request.getTotalPrice();
+    }
+}
 
     Order order = new Order();
     order.setUser(user);
@@ -81,7 +83,6 @@ total = total.add(giftItem.getPrice());
 
     return toDTO(orderRepository.save(order));
 }
-
     // user sees their own orders
     public List<OrderDTO> getMyOrders() {
         String email = SecurityContextHolder.getContext()
@@ -130,28 +131,28 @@ total = total.add(giftItem.getPrice());
         return toDTO(orderRepository.save(order));
     }
 
-    // converts Order to OrderDTO
     private OrderDTO toDTO(Order order) {
-        OrderDTO dto = new OrderDTO();
-        dto.setId(order.getId());
-        dto.setUserName(order.getUser().getName());
-        dto.setUserEmail(order.getUser().getEmail());
+    OrderDTO dto = new OrderDTO();
+    dto.setId(order.getId());
+    dto.setUserName(order.getUser().getName());
+    dto.setUserEmail(order.getUser().getEmail());
+
+    if (order.getBouquet() != null) {
         dto.setBouquetName(order.getBouquet().getName());
-
-// add after setBouquetName
-if (order.getGiftItem() != null) {
-    dto.setGiftItemName(order.getGiftItem().getName());
-}
-if (order.getBouquet() != null) {
-    dto.setBouquetName(order.getBouquet().getName());
-}
-
-        dto.setSelectedColor(order.getSelectedColor());
-        dto.setSelectedCount(order.getSelectedCount());
-        dto.setTotalPrice(order.getTotalPrice());
-        dto.setStatus(order.getStatus().name());
-        dto.setNotes(order.getNotes());
-        dto.setCreatedAt(order.getCreatedAt());
-        return dto;
+    } else {
+        dto.setBouquetName("Custom Bouquet");
     }
+
+    if (order.getGiftItem() != null) {
+        dto.setGiftItemName(order.getGiftItem().getName());
+    }
+
+    dto.setSelectedColor(order.getSelectedColor());
+    dto.setSelectedCount(order.getSelectedCount());
+    dto.setTotalPrice(order.getTotalPrice());
+    dto.setStatus(order.getStatus().name());
+    dto.setNotes(order.getNotes());
+    dto.setCreatedAt(order.getCreatedAt());
+    return dto;
+}
 }

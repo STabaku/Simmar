@@ -68,4 +68,34 @@
   } else {
     mount();
   }
+
+  // add this inside the IIFE in admin-sidebar.js
+window.simarLogout = function () {
+  localStorage.removeItem('simar_token');
+  localStorage.removeItem('simar_user');
+  window.location.href = '/';
+};
+
+
+return `
+  <aside class="admin-sidebar">
+    <div class="admin-sidebar-title">Menu</div>
+    ${linksHTML}
+    <div class="admin-sidebar-title">Account</div>
+    <a href="/" class="sidebar-link" target="_blank">
+      <i data-lucide="home" width="16" height="16"></i>
+      View Shop
+    </a>
+    <button class="sidebar-link" onclick="simarLogout()"
+            style="width:100%;text-align:left;border:none;
+                   background:none;cursor:pointer;
+                   font-family:var(--font-body);">
+      <i data-lucide="log-out" width="16" height="16"></i>
+      Logout
+    </button>
+  </aside>`;
 })();
+
+
+
+

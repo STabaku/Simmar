@@ -2960,3 +2960,413 @@ a.contact-info-value:hover {
     gap: 2rem;
   }
 }
+
+
+
+
+/*-----------------------------------------------------------------------*/
+
+/*-----------------------------------------------------------------------*/
+
+/*-----------------------------------------------------------------------*/
+
+/*-----------------------------------------------------------------------*/
+
+/*-----------------------------------------------------------------------*/
+
+/*-----------------------------------------------------------------------*/
+
+/*-----------------------------------------------------------------------*/
+/*build bouquet page*/
+
+/*--needs fixing-*/
+
+/* ============================================
+   Build a Bouquet page
+   Add at the bottom of styles.css
+   ============================================ */
+
+.bb-wrap {
+  display: flex;
+  width: 100%;
+  max-width: 960px;
+  min-height: 660px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--pink-light);
+  box-shadow: var(--shadow-card);
+  margin: 0 auto;
+}
+
+/* ── Panel (left side) ── */
+.bb-panel {
+  width: 310px;
+  flex-shrink: 0;
+  padding: 1.8rem 1.4rem;
+  overflow-y: auto;
+  background: var(--white);
+  border-right: 1px solid var(--pink-light);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.panel-title {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--brown);
+  margin-bottom: 0.2rem;
+}
+
+.panel-sub {
+  font-size: 0.7rem;
+  color: var(--text-light);
+  margin-bottom: 1.4rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Section label inside panel */
+.slabel {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+  margin-top: 1.2rem;
+}
+
+.slabel:first-of-type {
+  margin-top: 0;
+}
+
+/* Option button grids */
+.og {
+  display: grid;
+  gap: 5px;
+}
+
+.og.two   { grid-template-columns: 1fr 1fr; }
+.og.three { grid-template-columns: 1fr 1fr 1fr; }
+
+/* Option buttons */
+.ob {
+  padding: 0.5rem 0.3rem;
+  border: 1.5px solid var(--pink-light);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  background: var(--cream);
+  color: var(--text-mid);
+  text-align: center;
+  transition: var(--transition);
+  line-height: 1.3;
+}
+
+.ob:hover {
+  background: var(--pink-pale);
+  border-color: var(--pink);
+  color: var(--brown);
+}
+
+.ob.active {
+  border: 1.5px solid var(--pink);
+  background: var(--pink-pale);
+  color: var(--brown);
+  font-weight: 500;
+}
+
+/* Color dots */
+.crow {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+
+.cdot {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2.5px solid transparent;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+
+.cdot.active {
+  border-color: var(--brown);
+  transform: scale(1.18);
+}
+
+/* Section card (grouped area) */
+.sc {
+  background: var(--pink-pale);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem;
+  border: 1px solid var(--pink-light);
+}
+
+/* Quantity control */
+.qrow {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-top: 0.6rem;
+}
+
+.qbtn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1.5px solid var(--pink-light);
+  background: var(--white);
+  cursor: pointer;
+  font-size: 1.1rem;
+  color: var(--brown);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  font-family: var(--font-body);
+}
+
+.qbtn:hover {
+  background: var(--pink-pale);
+  border-color: var(--pink);
+}
+
+.qty-num {
+  font-size: 1.2rem;
+  font-weight: 500;
+  min-width: 34px;
+  text-align: center;
+  color: var(--text-dark);
+}
+
+.qty-unit {
+  font-size: 0.72rem;
+  color: var(--text-light);
+}
+
+/* Mixed flower row inputs */
+.mixrow {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+
+.mixrow select,
+.mixrow input[type=number] {
+  padding: 0.4rem 0.5rem;
+  border: 1.5px solid var(--pink-light);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  background: var(--white);
+  color: var(--text-dark);
+  outline: none;
+  transition: var(--transition);
+}
+
+.mixrow select:focus,
+.mixrow input[type=number]:focus {
+  border-color: var(--pink);
+}
+
+.mixrow select        { flex: 1; min-width: 65px; }
+.mixrow input[type=number] { width: 52px; }
+
+/* Add flower button */
+.addbtn {
+  padding: 0.4rem 0.9rem;
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  white-space: nowrap;
+  transition: var(--transition);
+}
+
+.addbtn:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+/* Flower tags (added flowers shown as chips) */
+.ftag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+  font-size: 0.72rem;
+  margin: 2px;
+  border: 1px solid var(--pink-light);
+  background: var(--white);
+  color: var(--text-mid);
+}
+
+/* Remove tag button */
+.rtag {
+  cursor: pointer;
+  font-size: 0.9rem;
+  opacity: 0.45;
+  line-height: 1;
+  transition: opacity 0.15s;
+}
+
+.rtag:hover { opacity: 1; }
+
+/* Extras checkboxes */
+.xchk {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.6rem;
+  border: 1px solid var(--pink-light);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  margin-bottom: 5px;
+  font-size: 0.78rem;
+  color: var(--text-mid);
+  transition: background 0.15s;
+  background: var(--white);
+}
+
+.xchk:hover { background: var(--pink-pale); }
+
+.xchk input {
+  accent-color: var(--pink);
+  width: 14px;
+  height: 14px;
+}
+
+/* Divider inside panel */
+.div {
+  height: 1px;
+  background: var(--pink-light);
+  margin: 0.8rem 0;
+}
+
+/* Price breakdown */
+.prow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  color: var(--text-light);
+  margin-bottom: 0.3rem;
+}
+
+.ptot {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  color: var(--brown);
+  margin-top: 0.4rem;
+}
+
+/* Order button */
+.obtn {
+  width: 100%;
+  padding: 0.8rem;
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 0.8rem;
+  letter-spacing: 0.03em;
+  transition: var(--transition);
+  box-shadow: 0 4px 16px rgba(200, 130, 180, 0.3);
+}
+
+.obtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(200, 130, 180, 0.4);
+}
+
+/* Clear button */
+.clearbtn {
+  width: 100%;
+  padding: 0.65rem;
+  background: transparent;
+  color: var(--text-light);
+  border: 1px solid var(--pink-light);
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  letter-spacing: 0.02em;
+  transition: var(--transition);
+}
+
+.clearbtn:hover {
+  background: #fff0f0;
+  color: #c0392b;
+  border-color: #e0a0a0;
+}
+
+/* ── Preview (right side) ── */
+.bb-preview {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: var(--cream);
+}
+
+.bb-preview canvas {
+  display: block;
+  border-radius: var(--radius-md);
+}
+
+.plabel {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--text-light);
+  margin-top: 0.8rem;
+  text-align: center;
+}
+
+/* Panel scrollbar */
+.bb-panel::-webkit-scrollbar       { width: 4px; }
+.bb-panel::-webkit-scrollbar-track { background: transparent; }
+.bb-panel::-webkit-scrollbar-thumb {
+  background: var(--pink-light);
+  border-radius: 4px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .bb-wrap {
+    flex-direction: column;
+    min-height: unset;
+  }
+
+  .bb-panel {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--pink-light);
+    max-height: 420px;
+  }
+
+  .bb-preview {
+    min-height: 360px;
+  }
+}

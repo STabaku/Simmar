@@ -47,24 +47,25 @@
              Admin Dashboard
            </a>`
         : '';
-      accountHTML = `
-        <div class="navbar-account">
-          <button class="account-btn" id="accountBtn">
-            <i data-lucide="user" width="15" height="15"></i>
-            ${user ? user.name.split(' ')[0] : 'Account'}
-          </button>
-          <div class="account-dropdown" id="accountDropdown">
-            <a href="/pages/my-orders.html">
-              <i data-lucide="package" width="15" height="15"></i>
-              My Orders
-            </a>
-            ${adminLink}
-            <button onclick="simarLogout()">
-              <i data-lucide="log-out" width="15" height="15"></i>
-              Logout
-            </button>
-          </div>
-        </div>`;
+   accountHTML = `
+  <div class="navbar-account">
+    <button class="account-btn" id="accountBtn">
+      <i data-lucide="user" width="15" height="15"></i>
+      ${user ? user.name.split(' ')[0] : 'Account'}
+    </button>
+    <div class="account-dropdown" id="accountDropdown">
+      ${!isAdmin() ? `
+        <a href="/pages/my-orders.html">
+          <i data-lucide="package" width="15" height="15"></i>
+          My Orders
+        </a>` : ''}
+      ${adminLink}
+      <button onclick="simarLogout()">
+        <i data-lucide="log-out" width="15" height="15"></i>
+        Logout
+      </button>
+    </div>
+  </div>`;
     } else {
       accountHTML = `
         <a href="/pages/login.html" class="btn btn-primary" style="padding:0.5rem 1.4rem;font-size:0.88rem;">

@@ -14,6 +14,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import org.springframework.http.HttpMethod;
+
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -24,11 +26,21 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
+        //prov per order custom
+        .cors(cors -> cors.configurationSource(request -> {
+        var config = new org.springframework.web.cors.CorsConfiguration();
+        config.setAllowedOrigins(java.util.List.of("*"));
+        config.setAllowedMethods(java.util.List.of("GET","POST","PUT","DELETE","OPTIONS"));
+        config.setAllowedHeaders(java.util.List.of("*"));
+        return config;
+    }))
+    //ketu mbaro prova 
             .csrf(csrf -> csrf.disable())
             .sessionManagement(session ->
                 session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
        .authorizeHttpRequests(auth -> auth
     // allow all static files (html, css, js, images)
+    .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
     .requestMatchers(
         "/",
         "/index.html",
